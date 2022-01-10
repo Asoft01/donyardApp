@@ -1,0 +1,46 @@
+<div class="donyard-container col-md-12 col-sm-12 col-lg-12 row">
+    <div class="col-md-4 col-sm-4 col-lg-4 login-panel">
+        <div class="header text-center">
+            <div class="navbar-brand">
+                <img src="assets/images/logo.png" />
+            </div>
+        </div>
+        <div class="form">
+            <p class="form-header col-7 mb-5">Get started with Email or Mobile</p>
+
+            <div class="form-input">
+                <div class="alert alert-danger text-center mb-5" *ngIf="error && !(processing)">{{error}}</div>
+
+                <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control form-control-sm" id="EmailOrMobile" placeholder="Email Or Mobile"
+                        formControlName="emailMobile">
+                        <label for="emailMobile">Email Or Mobile</label>
+                    </div>
+                    <div *ngIf="signUpForm.controls['emailMobile'].invalid && (signUpForm.controls['emailMobile'].dirty || signUpForm.controls['emailMobile'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="signUpForm.controls['emailMobile'].errors?.['required']">
+                            Email or Mobile is required.
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" type="submit" [disabled]="signUpForm.invalid">
+                            Continue <fa-icon class="right-icon" [icon]="getButtonIcon()" [pulse]="processing"></fa-icon>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="signup-action text-center">
+            Already have an account? <a routerLink="/login">Login.</a>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-8 col-lg-8 info-panel">
+        <div class="info-text col-4">
+            <h1 style="font-size:50px">A community of helpers</h1>
+            <h3 class="text-success" style="font-style: italic;">Na plenty love I wan dey share now</h3>
+        </div>
+    </div>
+</div>

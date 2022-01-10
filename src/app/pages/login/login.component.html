@@ -1,0 +1,70 @@
+<div class="donyard-container col-md-12 col-sm-12 col-lg-12 row">
+    <div class="col-md-4 col-sm-4 col-lg-4 login-panel">
+        <div class="header text-center">
+            <div class="navbar-brand">
+                <img src="assets/images/logo.png" />
+            </div>
+        </div>
+        <div class="form">
+            <h5 class="form-header col-2 mb-5">Sign In</h5>
+
+            <div class="form-input">
+                <div class="alert alert-danger text-center mb-5" *ngIf="error && !(processing)">{{error}}</div>
+
+                <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control form-control-sm" id="userName" placeholder="userName"
+                            formControlName="userName">
+                        <label for="userName">Username</label>
+                    </div>
+                    <div *ngIf="signInForm.controls['userName'].invalid && (signInForm.controls['userName'].dirty || signInForm.controls['userName'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="signInForm.controls['userName'].errors?.['required']">
+                            Username is required.
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control form-control-sm" id="password" placeholder="Password"
+                            formControlName="password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div *ngIf="signInForm.controls['password'].invalid && (signInForm.controls['password'].dirty || signInForm.controls['password'].touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="signInForm.controls['password'].errors?.['required']">
+                            Password is required.
+                        </div>
+                        <div *ngIf="signInForm.controls['password'].errors?.['minlength']">
+                            Password cannot be less than 4 characters.
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" type="submit" [disabled]="signInForm.invalid">
+                            SignIn <fa-icon class="right-icon" [icon]="getButtonIcon()" [pulse]="processing"></fa-icon>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row text-end">
+            <h6>Forgot password</h6>
+        </div>
+        <!-- <div class="row social-login">
+            <div class="col-12 col-md-6">
+                <button class="btn btn-light btn-block btn-google">Login with Google</button>
+            </div>
+            <div class="col-12 col-md-6">
+                <button class="btn btn-light btn-block btn-facebook">Login with Facebook</button>
+            </div>
+        </div> -->
+
+        <div class="signup-action text-center">
+            Don't have account? <a routerLink="/signup">Sign up.</a>
+        </div>
+    </div>
+    <div class="col-md-8 col-sm-8 col-lg-8 info-panel">
+        <div class="info-text col-4">
+            <h1 style="font-size:50px">A community of helpers</h1>
+            <h3 class="text-success" style="font-style: italic;">Na plenty love I wan dey share now</h3>
+        </div>
+    </div>
+</div>

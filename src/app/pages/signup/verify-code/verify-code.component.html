@@ -1,0 +1,14 @@
+<div class="container col-12">
+    <div class="col-md-5 col-sm-5 col-lg-5">
+        <div class="alert alert-danger text-center mb-2" *ngIf="error && !(processing)">{{error}}</div>
+        <div class="form-floating mt-1 mb-3">
+            <input type="text" class="form-control form-control-sm" id="verificationCode" name="verificationCode" placeholder="Verification Code"
+            [(ngModel)]="verificationCode" required="true">
+            <label for="verificationCode">Enter verfication code</label>
+        </div>
+
+        <button class="btn btn-success" type="button" (click)="verifyCode()">
+            Submit <fa-icon class="right-icon" [icon]="getButtonIcon()" [pulse]="processing"></fa-icon>
+        </button>
+    </div>
+</div>

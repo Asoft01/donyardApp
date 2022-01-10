@@ -1,0 +1,6 @@
+export class StorageKeys {
+
+    static AUTHORIZATION_HEADER = 'Bearer Auth2AAA92CDE4A1D39242D04D5112EA95A8226D15F071CC6D0FC6EC7F63119738C7';
+    static ACCESS_TOKEN: any;
+    static USER_ID: any;
+}
