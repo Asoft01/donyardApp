@@ -11,7 +11,7 @@ const app = express();
 app.use(express.static('./dist/donyardApp'));
 
     app.get('/*', function(req, res) {
-        res.sendFile('index.html', {root: '/dist/donyardApp'}
+        res.sendFile('index.html', {root: '/dist/donyardApp/'}
     );
 });
 
